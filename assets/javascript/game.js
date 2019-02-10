@@ -22,4 +22,20 @@ var reset = function() {
     for (var i = 0; i< wordBank[randWord].length; i++) {
         guessingWord.push("_");
     }
-}
+    update ();
+};
+
+// Update HTML once the game has been started or reset
+var update = function() {
+    document.getElementById("winsDisplay").innerHTML = "Wins: " + wins;
+    document.getElementById("wordDisplay").innerHTML = "";
+    for (var i = 0; i < randWord.length; i++) {
+        document.getElementById("wordDisplay").innerHTML += guessingWord[i];
+    }
+    document.getElementById("remainDisplay").innerHTML = "Number of guesses remaining: " + remGuesses;
+    document.getElementById("guessedDisplay").innerHTML = "Letters already guessed: " + guessedLet;
+    // Game ends when user has 0 guesses remaining.
+    if (remGuesses <= 0) {
+        ended = true;
+    }
+};
